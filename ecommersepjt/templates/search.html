@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+
+
+       Welcome to Rishipoornima pvt ltd  where you want to buy different items
+
+{% endblock %}
+{% block title %}
+   Search
+{% endblock %}
+{% block content %}
+<div>
+    <p class="text-center my_search_text">you have searched for <b>'{{query}}'</b></p>
+</div>
+<div class="container mt-4">
+    <div class="row mx-auto gy-4 ">
+        {% for pdt in products %}
+        <div class="my_bottom_margin col-9 col-sm-12 col-md-4 xol-lg-4" >
+            <div class="card text-center h-100" >
+                <a href="{{pdt.get_url}}"><img class="card-img-top my_image" src="{{pdt.image.url}}" alt="{{pdt.name}}" width="100px" height="200px"></a>
+                <div class="card-body">
+                    <h4> {{pdt.name}}</h4>
+                    <p>{{pdt.price}}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="row mx-auto">
+            <p class="text-center my_search_text">0 result found</p>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
